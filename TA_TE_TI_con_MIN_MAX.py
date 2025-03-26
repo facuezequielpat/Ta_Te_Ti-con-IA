@@ -30,9 +30,6 @@ for file in files:
 
     # Carga la imagen y la almacena en el diccionario
     imagenes[file] = pygame.image.load(ruta_imagen)
-#imagen_tablero = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/tablero.png")
-#imagen_cruz = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/cruz.png")
-#imagen_circulo = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/circulo.png")
 
 # Redimensionar las imágenes para que encajen en la ventana y las celdas
 imagen_tablero = pygame.transform.scale(imagenes["tablero.png"], (TAMAÑO_VENTANA, TAMAÑO_VENTANA))
