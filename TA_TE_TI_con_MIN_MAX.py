@@ -1,6 +1,7 @@
 import pygame
 import sys
 import math
+import os
 
 # Inicializar pygame
 pygame.init()
@@ -16,15 +17,27 @@ ANCHO_CELDA = TAMAÑO_VENTANA // 3
 ventana = pygame.display.set_mode((TAMAÑO_VENTANA, TAMAÑO_VENTANA))
 pygame.display.set_caption("Ta-Te-Ti con IA")
 
-# Cargar imágenes del tablero, cruz y círculo
-imagen_tablero = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/tablero.png")
-imagen_cruz = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/cruz.png")
-imagen_circulo = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/circulo.png")
+files=["tablero.png", "cruz.png", "circulo.png"]
+
+imagenes={}
+
+for file in files:
+    # Obtiene la ruta absoluta del directorio actual del script
+    directorio_actual = os.path.dirname(os.path.abspath(__file__))
+
+    # Construye la ruta completa de la imagen de manera dinámica
+    ruta_imagen = os.path.join(directorio_actual, "IMG", file)
+
+    # Carga la imagen y la almacena en el diccionario
+    imagenes[file] = pygame.image.load(ruta_imagen)
+#imagen_tablero = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/tablero.png")
+#imagen_cruz = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/cruz.png")
+#imagen_circulo = pygame.image.load("/Users/facue/Desktop/Cursos/Proyectos de programacion/Ta_Te_Ti/IMG/circulo.png")
 
 # Redimensionar las imágenes para que encajen en la ventana y las celdas
-imagen_tablero = pygame.transform.scale(imagen_tablero, (TAMAÑO_VENTANA, TAMAÑO_VENTANA))
-imagen_cruz = pygame.transform.scale(imagen_cruz, (ANCHO_CELDA, ANCHO_CELDA))
-imagen_circulo = pygame.transform.scale(imagen_circulo, (ANCHO_CELDA, ANCHO_CELDA))
+imagen_tablero = pygame.transform.scale(imagenes["tablero.png"], (TAMAÑO_VENTANA, TAMAÑO_VENTANA))
+imagen_cruz = pygame.transform.scale(imagenes["cruz.png"], (ANCHO_CELDA, ANCHO_CELDA))
+imagen_circulo = pygame.transform.scale(imagenes["circulo.png"], (ANCHO_CELDA, ANCHO_CELDA))
 
 # Definir el tablero inicial como una lista con 9 espacios vacíos
 tablero = [' ' for _ in range(9)]
